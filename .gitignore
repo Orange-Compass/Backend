@@ -338,4 +338,9 @@ gradle-app.setting
 # Java heap dump
 *.hprof
 
+### Extras ###
+application.properties
+dockerfile
+testdb.sql
+
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,gradle
