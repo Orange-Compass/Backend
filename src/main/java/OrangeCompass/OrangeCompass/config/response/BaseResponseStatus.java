@@ -1,4 +1,4 @@
-package OrangeCompass.OrangeCompass.config;
+package OrangeCompass.OrangeCompass.config.response;
 
 import lombok.Getter;
 
@@ -12,13 +12,15 @@ public enum BaseResponseStatus {
     /**
      * 3000 : 클라이언트 에러
      */
-    MATCH_NOT_FINISHED(false, 3063, "아직 종료되지 않은 경기입니다."),
+    INVALID_ACCESS_JWT(false, 3000, "유효하지 않은 토큰 입니다."),
+    EXPIRED_ACCESS_JWT(false, 3001, "만료된 토큰 입니다."),
+    INACTIVE_USER(false, 3010, "탈퇴한 유저입니다."),
+    INVALID_USER(false, 3011, "존재하지 않는 유저입니다."),
 
     /**
      * 4000 : 서버 에러
      */
     DATABASE_ERROR(false, 4000, "데이터베이스 연결에 실패하였습니다.");
-
 
     private final boolean isSuccess;
     private final int code;

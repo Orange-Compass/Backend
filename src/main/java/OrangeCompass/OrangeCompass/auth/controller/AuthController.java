@@ -3,10 +3,9 @@ package OrangeCompass.OrangeCompass.auth.controller;
 import OrangeCompass.OrangeCompass.auth.dto.AuthSignUpRequestDto;
 import OrangeCompass.OrangeCompass.auth.dto.AuthSignUpResponseDto;
 import OrangeCompass.OrangeCompass.auth.service.AuthService;
-import OrangeCompass.OrangeCompass.config.BaseResponse;
+import OrangeCompass.OrangeCompass.config.response.BaseResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

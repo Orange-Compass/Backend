@@ -20,4 +20,9 @@ public class JdbcUserRepository implements UserRepository{
         SqlParameterSource namedParameters = new BeanPropertySqlParameterSource(user);
         return namedParameterJdbcTemplate.update(sql, namedParameters);
     }
+
+    @Override
+    public User findByEmail(String currentUserEmail) {
+        return null;
+    }
 }
