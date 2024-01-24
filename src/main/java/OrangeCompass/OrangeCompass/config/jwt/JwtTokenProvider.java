@@ -37,6 +37,7 @@ public class JwtTokenProvider {
 
     public JwtTokenDto generateTokenDto(Authentication authentication) {
         // 권한들 가져오기
+        log.debug("JwtTokenProvider generateToken");
         String authorities = authentication.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.joining(","));
@@ -51,7 +52,7 @@ public class JwtTokenProvider {
                 .setExpiration(accessTokenExpiresIn)        // payload "exp": 1516239022 (예시)
                 .signWith(key, SignatureAlgorithm.HS512)    // header "alg": "HS512"
                 .compact();
-
+        log.debug("JwtTokenProvider accessToken" + accessToken);
         // Refresh Token 생성
         Date refreshTokenExpiresIn = new Date(now + REFRESH_TOKEN_EXPIRE_TIME);
         String refreshToken = Jwts.builder()
@@ -60,7 +61,7 @@ public class JwtTokenProvider {
                 .setExpiration(refreshTokenExpiresIn)
                 .signWith(key, SignatureAlgorithm.HS512)
                 .compact();
-
+        log.debug("JwtTokenProvider refreshToken" + refreshToken);
         return JwtTokenDto.builder()
                 .grantType(BEARER_TYPE)
                 .accessToken(accessToken)
@@ -71,6 +72,7 @@ public class JwtTokenProvider {
     }
 
     public Long getExpiration(String accessToken) {
+        log.debug("JwtTokenProvider getExpiration");
         // accessToken 남은 유효시간
         Date expiration = Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(accessToken).getBody().getExpiration();
         // 현재 시간
@@ -79,6 +81,7 @@ public class JwtTokenProvider {
     }
 
     public Authentication getAuthentication(String accessToken) {
+        log.debug("JwtTokenProvider getAuthentication");
         // 토큰 복호화
         Claims claims = parseClaims(accessToken);
 
@@ -99,6 +102,7 @@ public class JwtTokenProvider {
     }
 
     public boolean validateToken(String token) {
+        log.debug("JwtTokenProvider validateToken");
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
@@ -115,6 +119,7 @@ public class JwtTokenProvider {
     }
 
     private Claims parseClaims(String accessToken) {
+        log.debug("JwtTokenProvider parseClaims");
         try {
             return Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(accessToken).getBody();
         } catch (ExpiredJwtException e) {

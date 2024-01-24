@@ -28,7 +28,8 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
                          HttpServletResponse response,
                          AuthenticationException authException) throws IOException {
         BaseResponseStatus baseResponseStatus = (BaseResponseStatus) request.getAttribute("exception");
-
+        log.debug("JwtAuthenticationEntryPoint commence");
+        log.debug("JwtAuthenticationEntryPoint request exception" + request.getAttribute("exception"));
         // 유효한 자격증명을 제공하지 않고 접근하려 할때
         if(baseResponseStatus == null || baseResponseStatus == INVALID_ACCESS_JWT) {
             this.setResponse(response, INVALID_ACCESS_JWT);

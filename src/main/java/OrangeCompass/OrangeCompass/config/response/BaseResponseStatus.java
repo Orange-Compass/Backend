@@ -16,6 +16,7 @@ public enum BaseResponseStatus {
     EXPIRED_ACCESS_JWT(false, 3001, "만료된 토큰 입니다."),
     INACTIVE_USER(false, 3010, "탈퇴한 유저입니다."),
     INVALID_USER(false, 3011, "존재하지 않는 유저입니다."),
+    INVALID_PASSWORD(false, 3012, "비밀번호가 틀립니다."),
 
     /**
      * 4000 : 서버 에러

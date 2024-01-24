@@ -12,6 +12,4 @@ import lombok.Setter;
 public class AuthSignUpResponseDto {
     private String userName;
     private String email;
-
-
 }

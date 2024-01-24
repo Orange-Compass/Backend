@@ -53,11 +53,14 @@ public class WebSecurityConfig {
                 .authorizeHttpRequests(
                         authorize -> authorize
                                 .requestMatchers(CorsUtils::isPreFlightRequest).permitAll()
-                                .requestMatchers("/api/**/auth/sign-in",
+                                .requestMatchers(
+                                        "/api/**/auth/sign-in",
                                         "/api/**/auth/sign-up",
-                                        "/api/**/auth/reissue").permitAll()
-                                .requestMatchers("/api/**/admin/**").hasAuthority("ROLE_USER")
-                                .requestMatchers("/api/**/members/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
+                                        "/api/**/auth/reissue",
+                                        "/swagger-ui").permitAll()
+
+//                                .requestMatchers("/api/**/admin/**").hasAuthority("ROLE_USER")
+//                                .requestMatchers("/api/**/members/**").hasAnyAuthority("ROLE_ADMIN", "ROLE_USER")
                                 .anyRequest().authenticated()
                 )
 
