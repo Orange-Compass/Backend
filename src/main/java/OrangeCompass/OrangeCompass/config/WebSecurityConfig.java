@@ -2,7 +2,6 @@ package OrangeCompass.OrangeCompass.config;
 
 import OrangeCompass.OrangeCompass.config.jwt.*;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.file.ConfigurationSource;
 import org.springframework.boot.autoconfigure.security.SecurityProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

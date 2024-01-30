@@ -340,7 +340,6 @@ gradle-app.setting
 
 ### Extras ###
 application.properties
-dockerfile
 testdb.sql
-
+testdb.dockerfile
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,gradle
