@@ -13,7 +13,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     env:
-      working-directory: ./project
+      working-directory: ./
     steps:
     # 현재 REPO에서 코드를 워크플로우 환경으로 이동
     - uses: actions/checkout@v3
