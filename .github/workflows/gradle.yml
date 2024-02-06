@@ -12,7 +12,8 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-
+    env:
+      working-directory: ./project
     steps:
     # 현재 REPO에서 코드를 워크플로우 환경으로 이동
     - uses: actions/checkout@v3
@@ -23,6 +24,7 @@ jobs:
         distribution: 'adopt'
     # Github secrets로부터 데이터를 받아서, 워크 플로우에 파일을 생성
     - name: Make application.properties
+      working-directory: ${{ env.working-directory }}
       run: |
          cd ./src/main/resources
          touch ./application.properties
